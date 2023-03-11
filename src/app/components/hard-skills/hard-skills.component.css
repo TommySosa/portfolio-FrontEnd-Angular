@@ -1,0 +1,16 @@
+.row{
+    padding: 10px;
+}
+.circle-image-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  .circle-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
