@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditExperienciaComponent } from './components/experiencia/edit-experiencia.component';
+import { NewExperienciaComponent } from './components/experiencia/new-experiencia.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { EstudiosComponent } from './components/estudios/estudios.component';
-import { HardSkillsComponent } from './components/hard-skills/hard-skills.component';
-import { SobreMiComponent } from './components/sobre-mi/sobre-mi.component';
-import { ProyectosComponent } from './components/proyectos/proyectos.component';
-import { SoftSkillsComponent } from './components/soft-skills/soft-skills.component';
-import { CapacitacionesComponent } from './components/capacitaciones/capacitaciones.component';
+import { LoginComponent } from './components/login/login.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 const routes: Routes = [
-  { path: '', component: InicioComponent },
-  { path: 'estudios', component: EstudiosComponent },
-  { path: 'hard-skills', component: HardSkillsComponent },
-  { path: 'sobre-mi' , component: SobreMiComponent},
-  { path: 'proyectos', component: ProyectosComponent },
-  { path: 'soft-skills' , component: SoftSkillsComponent},
-  { path: 'capacitaciones', component: CapacitacionesComponent}
+  { path: 'portfolio', component: PortfolioComponent},
+  { path: 'login', component: LoginComponent},
+  { path: '', redirectTo:'portfolio', pathMatch:'full'},
+  { path: 'nuevaexp', component : NewExperienciaComponent},
+  { path: 'editexp/:id', component : EditExperienciaComponent}
 
 ];
 

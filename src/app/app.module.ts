@@ -18,6 +18,13 @@ import { NgParticlesModule } from 'ng-particles';
 import { } from "ng-particles";
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { interceptorProvider } from './services/interceptor-service';
+import { CommonModule } from '@angular/common';
+import { NewExperienciaComponent } from './components/experiencia/new-experiencia.component';
+import { EditExperienciaComponent } from './components/experiencia/edit-experiencia.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,16 +39,24 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ProyectosComponent,
     FooterComponent,
     ExperienciaComponent,
-  
+    PortfolioComponent,
+    LoginComponent,
+    NewExperienciaComponent,
+    EditExperienciaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgCircleProgressModule.forRoot({}),
     NgParticlesModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [
+    interceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

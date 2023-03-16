@@ -1,32 +1,3 @@
-<!--Inicio Modal-->
-
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Inicio de sesión</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="usuario" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="usuario" placeholder="Introduce tu usuario">
-            </div>
-            <div class="mb-3">
-              <label for="contrasena" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="contrasena" placeholder="Introduce tu contraseña">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-dark">Iniciar sesión</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Fin Modal-->
 <div class="container-fluid mb-2" style="position: relative; z-index: 99;">
     <nav class="navbar navbar-expand-lg navbar-light sticky-top menu mb-4" style="background-color: #25fc98;">
       <div class="container-fluid">
@@ -39,7 +10,7 @@
           <div class="col-sm-8">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#sobremi">Sobre mí</a>
@@ -60,7 +31,8 @@
           </div>
           <div class="d-flex justify-content-end col-sm-4">
             <img src="/assets/ArgProgramaLogo.png">
-            <button class="btn btn-outline-light text-dark" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+            <button class="btn btn-outline-light text-dark" type="button" routerLink="/login" *ngIf="!IsLogged">Iniciar sesión</button>
+            <button class="btn btn-outline-light text-dark" type="button" (click)="onLogOut()" *ngIf="IsLogged">Cerrar sesión</button>
           </div>
         </div>
         
