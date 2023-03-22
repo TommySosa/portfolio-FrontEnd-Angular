@@ -1,39 +1,150 @@
 <div class="container-fluid">
     <h1 class="text-center m-5">Experiencia</h1>
-    <div class="col-lg-2">
-        <button type="button" class="btn btn-success" routerLink="/nuevaexp" *ngIf="isLogged">
-            Nueva experiencia
-        </button>
-    </div>
-    <div class="caja p-3">
-        <div class="row">
+    <div class="p-3" style="font-size: 1.4rem;">
+        <div class="row to-right d-flex justify-content-center">
             <div class="col-lg-1 col-md-1 col-sm-1"></div>
-            <div class="col-lg-11 col-md-11 col-sm-11">
-                <table class="table text-white">
-                    <tbody>
-                        <tr *ngFor="let Experiencia of expe">
-                            <td>{{Experiencia.nombreE}}</td>
-                            <td>{{Experiencia.descripcionE}}</td>
-                            <td *ngIf="isLogged"><button class="btn btn-warning" routerLink="/explab/editexp/{{Experiencia.id}}"> Editar <i class="fa-regular fa-pen-to-square"></i></button> </td>
-                            <td *ngIf="isLogged"><button class="btn btn-danger" (click)="delete(Experiencia.id)"> Borrar <i class="fa-solid fa-trash"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>           
+            <div class="col-lg-2 col-md-2 col-sm-2" *ngIf="isLogged">
+                <button type="button" class="btn btn-success" routerLink="/nuevaexp" >
+                    Nueva experiencia
+                </button>
+            </div>
+            <div class="col-lg-9">
+                <ul *ngFor="let Experiencia of expe">
+                    <h2><i class="far fa-star"></i> {{Experiencia.nombreE}}</h2> 
+                    <p>&nbsp;{{Experiencia.descripcionE}}</p>
+                    <td *ngIf="isLogged"><button class="btn btn-sm btn-warning"
+                            routerLink="/editexp/{{Experiencia.id}}"> <i
+                                class="fa-regular fa-pen-to-square"></i></button> </td>
+                    <td *ngIf="isLogged"><button class="btn btn-sm btn-danger" (click)="delete(Experiencia.id)"><i
+                                class="fa-solid fa-trash"></i></button></td>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
+<!-- experience section starts -->
+<!-- <section class="experience" id="experience">
+
+    <h2 class="heading"><i class="fas fa-briefcase"></i> Experience </h2>
+  
+    <div class="timeline">
+  
+      <div class="container right">
+        <div class="content">
+          <div class="tag">
+            <h2>Self Employed</h2>
+          </div>
+          <div class="desc">
+              <h3>Full Stack Developer</h3>
+              <p>Oct 2021 - present</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container left">
+        <div class="content">
+          <div class="tag">
+            <h2>Mapstreak Flyseas</h2>
+          </div>
+          <div class="desc">
+              <h3>Web Developer | Internship</h3>
+              <p>June 2021 - Dec 2021</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container right">
+        <div class="content">
+          <div class="tag">
+            <h2>The Spark Foundation</h2>
+          </div>
+          <div class="desc">
+              <h3>Website Developer | Internship</h3>
+              <p>May 2021 - June 2021</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container left">
+        <div class="content">
+          <div class="tag">
+            <h2>The Spark Foundation</h2>
+          </div>
+          <div class="desc">
+              <h3>Mobile Application Developer | Internship</h3>
+              <p>April 2021 - May 2021</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container right">
+        <div class="content">
+          <div class="tag">
+            <h2>Frshr Technologies</h2>
+          </div>
+          <div class="desc">
+              <h3>Wordpress Developer | Internship</h3>
+              <p>April 2021 - April 2021</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container left">
+        <div class="content">
+          <div class="tag">
+            <h2>WonderingBlog</h2>
+          </div>
+          <div class="desc">
+              <h3>Web Development & SEO | Internship</h3>
+              <p>March 2021 - April 2021</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="morebtn">
+      <a href="/experience" class="btn"><span>View All</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+    </div>
+  
+  </section> -->
+  <!-- experience section ends -->
 <!-- <div class="col-lg-1"></div>
-            <div class="col-lg-11">
-                <ul>
-                    <h2><i class="far fa-star"></i> Experiencia 1</h2> -
-                    <h3> 2022-2023</h3>
-                    <p>&nbsp;Este es mi primera descripcion de mi experiencia laboral que no tengo jajajaj</p>
-                    <h2><i class="far fa-star"></i> Experiencia 1</h2> -
-                    <h3> 2022-2023</h3>
-                    <p>&nbsp;Este es mi primera descripcion de mi experiencia laboral que no tengo jajajaj</p>
-                    <h2><i class="far fa-star"></i> Experiencia 1</h2> -
-                    <h3> 2022-2023</h3>
-                    <p>&nbsp;Este es mi primera descripcion de mi experiencia laboral que no tengo jajajaj</p>
-                </ul>
-            </div> -->
+<div class="col-lg-11">
+    <ul *ngFor="let Experiencia of expe">
+        <h2><i class="far fa-star"></i> {{Experiencia.nombreE}}</h2> -
+        <h3> 2022-2023</h3>
+        <p>&nbsp;{{Experiencia.descripcionE}}</p>
+        <td *ngIf="isLogged"><button class="btn btn-sm btn-warning" routerLink="/explab/editexp/{{Experiencia.id}}"> <i
+                    class="fa-regular fa-pen-to-square"></i></button> </td>
+        <td *ngIf="isLogged"><button class="btn btn-sm btn-danger" (click)="delete(Experiencia.id)"><i
+                    class="fa-solid fa-trash"></i></button></td>
+    </ul>
+</div> -->
+<script>
+    $(document).ready(function(){
+
+$('#menu').click(function(){
+    $(this).toggleClass('fa-times');
+    $('.navbar').toggleClass('nav-toggle');
+});
+
+$(window).on('scroll load',function(){
+    $('#menu').removeClass('fa-times');
+    $('.navbar').removeClass('nav-toggle');
+
+    if(window.scrollY>60){
+        document.querySelector('#scroll-top').classList.add('active');
+    }else{
+        document.querySelector('#scroll-top').classList.remove('active');
+    }
+});
+});
+
+
+/* SCROLL EXPERIENCE */
+srtop.reveal('.experience .timeline',{delay: 400});
+srtop.reveal('.experience .timeline .container',{interval: 400}); 
+</script>

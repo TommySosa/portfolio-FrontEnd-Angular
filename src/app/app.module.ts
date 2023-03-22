@@ -25,6 +25,11 @@ import { interceptorProvider } from './services/interceptor-service';
 import { CommonModule } from '@angular/common';
 import { NewExperienciaComponent } from './components/experiencia/new-experiencia.component';
 import { EditExperienciaComponent } from './components/experiencia/edit-experiencia.component';
+import { NewestudiosComponent } from './components/estudios/newestudios.component';
+import { EditEstudiosComponent } from './components/estudios/edit-estudios.component';
+import { EditHardskillsComponent } from './components/hard-skills/edit-hardskills.component';
+import { NewHardskillsComponent } from './components/hard-skills/new-hardskills.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +47,11 @@ import { EditExperienciaComponent } from './components/experiencia/edit-experien
     PortfolioComponent,
     LoginComponent,
     NewExperienciaComponent,
-    EditExperienciaComponent
+    EditExperienciaComponent,
+    NewestudiosComponent,
+    EditEstudiosComponent,
+    EditHardskillsComponent,
+    NewHardskillsComponent
   ],
   imports: [
     BrowserModule,

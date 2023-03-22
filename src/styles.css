@@ -1,16 +1,12 @@
 body{
     color: white;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1.5rem;
-    
 }
 .boton{
     color: white;
     
 }
-.menu{
-    border-radius: 0px 0px 20px 20px;
-}
+
 .boton:hover{
     background-color: #25fc98;
     color: black;
@@ -26,7 +22,7 @@ h1{
   text-align: left; 
   font-family: Comic Sans MS; 
   font-weight:bold; 
-  font-size: 30px; 
+  font-size: 2rem; 
   color: #25fc98; 
   text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68;
 }
@@ -34,75 +30,27 @@ h1{
   color: #fff;
   /*background-color: rgba(68, 67, 66, 0.8); */
   background-color: rgba(68, 67, 66, 0.8);
-  border-radius: 25px;
-  padding: 10px;
+  border-radius: 1.6rem;
+  padding: 0.6rem;
 }
-.modal-content {
-  background-color: #25fc98;
-}
+
 #particles-js{
   height: 100vh;
   width: 100%;
   position: fixed;
   z-index: -1;
 }
-.circle {
-  width: 200px;
-  margin: 6px 6px 20px;
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  line-height: 1.2;
-}
 
-.circle canvas {
-  vertical-align: top;
-  width: 200px !important;
-}
+/*
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
 
-.circle strong {
-  position: absolute;
-  top: 30px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  line-height: 40px;
-  font-size: 30px;
-  color: white;
-}
-
-.circle strong i {
-  font-style: normal;
-  font-size: 0.6em;
-  font-weight: normal;
-}
-
-.circle span {
-  display: block;
-  color: #aaa;
-  margin-top: 12px;
-}
-.typing {
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 2rem;
-    margin: 0 auto;
-    font-family: "Courier New";
-    border-right: 0.15em solid #18bdec;
-    animation: typing 4s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
+  .h2, h3 {
+      
+      font-size: 1rem;
+      word-wrap: break-word;
+      
   }
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  @keyframes blink {
-    50% {
-      border-color: transparent;
-    }
-  }
+}
+*/
+
   

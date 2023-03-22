@@ -1,6 +1,38 @@
 <h1 class="text-center mt-5 mb-5 titulo">Hard Skills</h1>
 <div class="container">
-  <div class="row">
+  <div class="text-center">
+    <button type="button" routerLink="/nuevahk" class="btn btn-sm btn-success" *ngIf="isLogged">
+        Nueva Hard-Skill
+    </button>
+  </div>
+  <div class="row to-right">
+    <div class="text-center col-sm-4 col-md-4 col-lg-4 circulo" *ngFor="let skill of skill">
+      <div class="">
+        <h5>{{skill.nombre}}</h5>
+        <div>
+          <img src="/assets/html-5.png" width="50">
+        </div>
+        <circle-progress [backgroundPadding]="7" [percent]="(skill.porcentaje)" [radius]="80" [space]="-6" [outerStrokeWidth]="6"
+        [innerStrokeWidth]="6" [outerStrokeColor]="'#25fc98'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+        [animationDuration]="1000" [subtitleColor]="'#fff'" [subtitleFontSize]="'20'"
+        [titleColor]="'#25fc98'" [unitsColor]="'#fff'" [unitsFontSize]="'20'" [clockwise]="false" [showSubtitle]="false" 
+        [showTitle]="true"></circle-progress>
+      </div>
+      <div class="d-flex justify-content-between align-items-center" *ngIf="isLogged">
+        <button class="btn btn-sm btn-warning mr-2" routerLink="/edithard/{{skill.id}}"><i class="fa-regular fa-pen-to-square"></i></button>
+        <button class="btn btn-sm btn-danger" (click)="delete(skill.id)"><i class="fa-solid fa-trash"></i></button>
+      </div>
+      
+
+    </div>
+    
+  </div>
+</div>
+
+
+<!-- <h1 class="text-center mt-5 mb-5 titulo">Hard Skills</h1>
+<div class="container">
+  <div class="row to-right">
     <div class="text-center col-sm-4 col-md-4 col-lg-4">
       <div class="">
         <h5>HTML</h5>
@@ -41,7 +73,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row to-right">
     <div class="text-center col-sm-4 col-md-4 col-lg-4">
       <div>
         <h5>Java</h5>
@@ -83,7 +115,7 @@
 
     </div>
   </div>
-  <div class="row">
+  <div class="row to-right">
     <div class="text-center col-sm-4 col-md-4 col-lg-4">
       <div>
         <h5>JavaScript</h5>
@@ -111,4 +143,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

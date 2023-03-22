@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MoveDirection, ClickMode, HoverMode, OutMode, Container, Engine, Main } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
+import { trigger, transition, style, animate } from '@angular/animations';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { loadFull } from "tsparticles";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    
   title = 'Portfolio';
   id = "tsparticles";
   particlesUrl = "http://foo.bar/particles.json";
@@ -105,3 +108,5 @@ export class AppComponent {
       await loadFull(engine);
   }
 }
+
+
