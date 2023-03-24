@@ -8,7 +8,7 @@ import { Estudios } from '../model/estudios';
 })
 export class EstudiosService {
   //URL = 'http://localhost:8080/educacion/';
-  URL = 'tomassosa.fly.dev/educacion/';
+  URL = 'http://tomassosa.fly.dev/educacion/';
   constructor(private httpClient : HttpClient) { }
 
 

@@ -10,7 +10,7 @@ import { NuevoUsuario } from '../model/nuevo-usuario';
 })
 export class AuthService {
   //authURL = 'http://localhost:8080/auth/';
-  authURL = 'tomassosa.fly.dev/auth/';
+  authURL = 'http://tomassosa.fly.dev/auth/';
 
   constructor(private httpClient: HttpClient) { }
 

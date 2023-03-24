@@ -8,7 +8,7 @@ import { HardSkills } from '../model/hard-skills';
 })
 export class HardSkillsService {
   //URL = 'http://localhost:8080/hardskills/';
-  URL = 'tomassosa.fly.dev/hardskills/';
+  URL = 'http://tomassosa.fly.dev/hardskills/';
   constructor(private httpClient : HttpClient) { }
 
   public lista() : Observable<HardSkills[]>{
