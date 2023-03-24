@@ -5,19 +5,23 @@
         <div class="row to-right">
           <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 col-xs-8">
             <h2 class="display-2 typing" id="nombre">{{persona.nombre}}<br>{{persona.apellido}}</h2>
-            <h3 class="lead typing" style="font-size: 1.4rem;">Full Stack Developer Jr</h3><br>
-            <p style="font-size: 1.5rem;">¡Hola! Soy un estudiante de último año de programación de 19 años de Tucumán, Argentina, apasionado por aprender nuevas tecnologías y ampliar mi conocimiento 
-              en el campo de la programación. Bienvenido a mi portfolio web, donde podrás conocer mis proyectos y habilidades en desarrollo.</p>
+            <h3 class="lead typing" style="font-size: 1.4rem;">{{persona.titulo}}</h3><br>
+            <p style="font-size: 1.5rem;">{{persona.descripcion}}</p>
           </div>
           <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xs-4">
             <div class="d-flex">
               <div class="rounded-circle" >
-                <img src="/assets/perfil.jpg" alt="" class="rounded-circle" style="border: 3px solid #25fc98">
+                <img src={{persona.img}} alt="" class="rounded-circle" style="border: 3px solid #25fc98">
               </div>
             </div>
           </div>
         </div>
         <button class="btn boton border-white to-right">Descargar CV</button>
+        <button type="button" class="btn btn-success" routerLink="/editarinicio/1" *ngIf="isLogged">
+          Editar persona
+        </button>
       </div>
     </div>
   </div>
+  <!-- ¡Hola! Soy un estudiante de último año de programación de 19 años de Tucumán, Argentina, apasionado por aprender nuevas tecnologías y ampliar mi conocimiento 
+  en el campo de la programación. Bienvenido a mi portfolio web, donde podrás conocer mis proyectos y habilidades en desarrollo. -->

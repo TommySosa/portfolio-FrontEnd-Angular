@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { persona } from 'src/app/model/persona.model';
 import { PersonaService } from 'src/app/services/persona.service';
 import ScrollReveal from 'scrollreveal';
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -10,12 +11,17 @@ import ScrollReveal from 'scrollreveal';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  persona: persona = new persona("","","");
+  persona: persona = null;
   
-  constructor(public personaService: PersonaService) { }
-
+  constructor(public personaService: PersonaService,private tokenService: TokenService) { }
+  isLogged = false;
   ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data => {this.persona = data});
+    this.cargarPersona();
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+    }
     ScrollReveal().reveal('.to-right', { 
       duration: 1800,
       delay: 0,
@@ -29,6 +35,13 @@ export class InicioComponent implements OnInit {
 
     });
 
+  }
+  cargarPersona(){
+    this.personaService.detail(1).subscribe(
+      data => {
+        this.persona = data;
+      }
+    )
   }
 
   
