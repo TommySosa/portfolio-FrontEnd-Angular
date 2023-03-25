@@ -23,9 +23,9 @@ export class PersonaService {
     return this.httpClient.get<persona>(this.URL + `detail/${id}`);
   }
 
-  // public save(persona: persona): Observable<any>{
-  //   return this.httpClient.post<any>(this.URL + 'create', persona);
-  // }
+  public save(persona: persona): Observable<any>{
+    return this.httpClient.post<any>(this.URL + 'create', persona);
+  }
 
   public update(id:number, persona: persona): Observable<any> {
     return this.httpClient.put<any>(this.URL + `update/${id}`, persona);
