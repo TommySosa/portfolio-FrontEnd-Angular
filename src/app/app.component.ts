@@ -57,7 +57,7 @@ export class AppComponent {
               width: 1,
           },
           collisions: {
-              enable: true,
+              enable: false,
           },
           move: {
               direction: MoveDirection.none,
@@ -66,15 +66,15 @@ export class AppComponent {
                   default: OutMode.bounce,
               },
               random: false,
-              speed: 6,
+              speed: 4,
               straight: false,
           },
           number: {
               density: {
                   enable: true,
-                  area: 800,
+                  area: 850,
               },
-              value: 80,
+              value: 70,
           },
           opacity: {
               value: 0.5,
