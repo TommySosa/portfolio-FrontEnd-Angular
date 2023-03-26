@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { SobreMiComponent } from './components/sobre-mi/sobre-mi.component';
-import { ParticulasComponent } from './components/particulas/particulas.component';
 import { EstudiosComponent } from './components/estudios/estudios.component';
 import { CapacitacionesComponent } from './components/capacitaciones/capacitaciones.component';
 import { HardSkillsComponent } from './components/hard-skills/hard-skills.component';
@@ -30,6 +29,9 @@ import { EditEstudiosComponent } from './components/estudios/edit-estudios.compo
 import { EditHardskillsComponent } from './components/hard-skills/edit-hardskills.component';
 import { NewHardskillsComponent } from './components/hard-skills/new-hardskills.component';
 import { EditInicioComponent } from './components/inicio/edit-inicio.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,6 @@ import { EditInicioComponent } from './components/inicio/edit-inicio.component';
     HeaderComponent,
     InicioComponent,
     SobreMiComponent,
-    ParticulasComponent,
     EstudiosComponent,
     CapacitacionesComponent,
     HardSkillsComponent,
@@ -63,7 +64,9 @@ import { EditInicioComponent } from './components/inicio/edit-inicio.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [
     interceptorProvider

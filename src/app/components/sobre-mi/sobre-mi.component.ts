@@ -18,9 +18,9 @@ export class SobreMiComponent{
   //    this.personaService.getPersona().subscribe(data => {this.persona = data})
 
     ScrollReveal().reveal('.to-right', { 
-      duration: 1800,
+      duration: 1500,
       delay: 0,
-      distance: '250px',
+      distance: '150px',
       origin: 'right',
       opacity: 0,
       easing: 'ease',

@@ -10,9 +10,9 @@ export class CapacitacionesComponent implements OnInit{
   constructor() {}
   ngOnInit(): void {
     ScrollReveal().reveal('.to-right', { 
-      duration: 1800,
+      duration: 1500,
       delay: 0,
-      distance: '250px',
+      distance: '150px',
       origin: 'right',
       opacity: 0,
       easing: 'ease',

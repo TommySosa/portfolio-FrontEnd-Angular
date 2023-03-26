@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { persona } from 'src/app/model/persona.model';
 import { EstudiosService } from 'src/app/services/estudios.service';
+import { ImageService } from 'src/app/services/image.service';
 import { PersonaService } from 'src/app/services/persona.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class EditInicioComponent implements OnInit{
   form: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private sPersona: PersonaService, private activatedRouter: ActivatedRoute, 
-    private router: Router) {
+    private router: Router, public imageService: ImageService) {
       this.form = new FormGroup({
         nombreE: new FormControl(),
         descripcionE: new FormControl(),
@@ -52,6 +53,6 @@ export class EditInicioComponent implements OnInit{
   }
 
   uploadImage($event:any) {
-
+    this.imageService.uploadImage($event);
   }
 }

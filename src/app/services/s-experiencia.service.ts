@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Experiencia } from '../model/experiencia';
 
 @Injectable({
@@ -9,7 +10,8 @@ import { Experiencia } from '../model/experiencia';
 export class SExperienciaService {
   //expURL = 'http://localhost:8080/explab/';
   //expURL = 'http://tomassosa.fly.dev/explab/';
-  expURL = 'https://tomassosa-tomasfacundososa.b4a.run/explab/';
+  //expURL = 'https://tomassosa-tomasfacundososa.b4a.run/explab/';
+  expURL= environment.serverURL + 'explab/';
 
 
 

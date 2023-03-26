@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { HardSkills } from '../model/hard-skills';
 
 @Injectable({
@@ -9,7 +10,8 @@ import { HardSkills } from '../model/hard-skills';
 export class HardSkillsService {
   //URL = 'http://localhost:8080/hardskills/';
   //URL = 'http://tomassosa.fly.dev/hardskills/';
-  URL = 'https://tomassosa-tomasfacundososa.b4a.run/hardskills/';
+  //URL = 'https://tomassosa-tomasfacundososa.b4a.run/hardskills/';
+  URL = environment.serverURL + 'hardskills/';
   constructor(private httpClient : HttpClient) { }
 
   public lista() : Observable<HardSkills[]>{
