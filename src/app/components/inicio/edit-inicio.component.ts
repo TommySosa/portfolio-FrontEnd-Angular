@@ -19,8 +19,11 @@ export class EditInicioComponent implements OnInit{
   constructor(private formBuilder:FormBuilder,private sPersona: PersonaService, private activatedRouter: ActivatedRoute, 
     private router: Router, public imageService: ImageService) {
       this.form = new FormGroup({
-        nombreE: new FormControl(),
-        descripcionE: new FormControl(),
+        nombre: new FormControl(),
+        apellido: new FormControl(),
+        descripcion: new FormControl(),
+        img : new FormControl(),
+        titulo : new FormControl()
   
       });
     }
@@ -39,8 +42,9 @@ export class EditInicioComponent implements OnInit{
   }
   
   onUpdate() : void {
-    const { nombre, descripcion } = this.form.value;
+    //const { nombre, descripcion } = this.form.value;
     this.persona = this.form.value;
+    this.persona.img = this.imageService.url;
     const id = this.activatedRouter.snapshot.params['id'];
     this.sPersona.update(id, this.persona).subscribe(
       data => {
@@ -52,7 +56,9 @@ export class EditInicioComponent implements OnInit{
     )
   }
 
-  uploadImage($event:any) {
-    this.imageService.uploadImage($event);
+  uploadImage($event:any): void {
+    const id = this.activatedRouter.snapshot.params['id'];
+    const name = "perfil_" + id;
+    this.imageService.uploadImage($event, name);
   }
 }

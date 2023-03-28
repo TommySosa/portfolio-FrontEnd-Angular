@@ -10,7 +10,8 @@
       <div class="">
         <h5>{{skill.nombre}}</h5>
         <div>
-          <img src="/assets/html-5.png" width="50">
+          <img src={{skill.img}} width="50">
+          <!-- <img [src]="imageSrc" width="50"> -->
         </div>
         <circle-progress [backgroundPadding]="7" [percent]="(skill.porcentaje)" [radius]="80" [space]="-6" [outerStrokeWidth]="6"
         [innerStrokeWidth]="6" [outerStrokeColor]="'#25fc98'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"

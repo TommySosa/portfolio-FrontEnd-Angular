@@ -8,10 +8,10 @@ import { HardSkills } from '../model/hard-skills';
   providedIn: 'root'
 })
 export class HardSkillsService {
-  //URL = 'http://localhost:8080/hardskills/';
+  URL = 'http://localhost:8080/hardskills/';
   //URL = 'http://tomassosa.fly.dev/hardskills/';
   //URL = 'https://tomassosa-tomasfacundososa.b4a.run/hardskills/';
-  URL = environment.serverURL + 'hardskills/';
+  //URL = environment.serverURL + 'hardskills/';
   constructor(private httpClient : HttpClient) { }
 
   public lista() : Observable<HardSkills[]>{
@@ -22,12 +22,12 @@ export class HardSkillsService {
     return this.httpClient.get<HardSkills>(this.URL + `detail/${id}`);
   }
 
-  public save(estudios: HardSkills): Observable<any>{
-    return this.httpClient.post<any>(this.URL + 'create', estudios);
+  public save(hardskill: HardSkills): Observable<any>{
+    return this.httpClient.post<any>(this.URL + 'create', hardskill);
   }
 
-  public update(id:number, estudios: HardSkills): Observable<any> {
-    return this.httpClient.put<any>(this.URL + `update/${id}`, estudios);
+  public update(id:number, hardskill: HardSkills): Observable<any> {
+    return this.httpClient.put<any>(this.URL + `update/${id}`, hardskill);
   }
 
   public delete(id: number): Observable<any>{

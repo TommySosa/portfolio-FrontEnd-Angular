@@ -10,10 +10,10 @@ import { persona } from '../model/persona.model';
   providedIn: 'root'
 })
 export class PersonaService {
-  //URL = 'http://localhost:8080/personas/';
+  URL = 'http://localhost:8080/personas/';
   //URL = 'http://tomassosa.fly.dev/personas/';
   //URL = 'https://tomassosa-tomasfacundososa.b4a.run/personas/';
-  URL = environment.serverURL + 'personas/';
+  //URL = environment.serverURL + 'personas/';
 
   constructor(private httpClient: HttpClient) { }
 

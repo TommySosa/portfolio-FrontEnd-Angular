@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import 'circle-progress';
 import ScrollReveal from 'scrollreveal';
 import { HardSkills } from 'src/app/model/hard-skills';
 import { HardSkillsService } from 'src/app/services/hard-skills.service';
+import { ImageService } from 'src/app/services/image.service';
 import { TokenService } from 'src/app/services/token.service';
 
 
@@ -15,7 +17,7 @@ export class HardSkillsComponent implements OnInit{
   skill: HardSkills[] = [];
 
 
-  constructor(private sHard: HardSkillsService, private token: TokenService) {
+  constructor(private sHard: HardSkillsService, private token: TokenService, private imageService: ImageService, private activatedRouter: ActivatedRoute) {
 
   }
 
@@ -40,6 +42,7 @@ export class HardSkillsComponent implements OnInit{
       }
   });
   }
+  
 
   getCircleImage(): string {
     return `

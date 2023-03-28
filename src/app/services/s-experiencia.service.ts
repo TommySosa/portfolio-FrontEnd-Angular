@@ -8,10 +8,10 @@ import { Experiencia } from '../model/experiencia';
   providedIn: 'root'
 })
 export class SExperienciaService {
-  //expURL = 'http://localhost:8080/explab/';
+  expURL = 'http://localhost:8080/explab/';
   //expURL = 'http://tomassosa.fly.dev/explab/';
   //expURL = 'https://tomassosa-tomasfacundososa.b4a.run/explab/';
-  expURL= environment.serverURL + 'explab/';
+  //expURL= environment.serverURL + 'explab/';
 
 
 
