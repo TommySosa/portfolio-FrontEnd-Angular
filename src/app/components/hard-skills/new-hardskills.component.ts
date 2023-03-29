@@ -14,6 +14,9 @@ import { Storage, ref, uploadBytes, list, getDownloadURL } from '@angular/fire/s
 export class NewHardskillsComponent implements OnInit{
   formulario: FormGroup;
   hard : HardSkills = null;
+  nombre: FormControl;
+  porcentaje: FormControl;
+  img: FormControl;
   imagesURLS : string[] = [];
   constructor(private formBuilder:FormBuilder,private sHard: HardSkillsService, private router: Router, private activatedRouter: ActivatedRoute,public imageService: ImageService, private storage: Storage) {
      this.formulario = new FormGroup({
@@ -23,21 +26,28 @@ export class NewHardskillsComponent implements OnInit{
      });
   }
   ngOnInit(): void {
-    this.imageService.clearURL();
+    this.imageService.clearURL();  
   }
   
-  uploadImage($event:any): void {
-    const randomString = Math.random().toString(36).substring(2, 17);
-    const name = "hardskill_" + randomString;
-    this.imageService.uploadImage($event, name);
+  uploadImage($event:any): void {   
+    this.imageService.clearURL();
+      const randomString = Math.random().toString(36).substring(2, 17);
+      const name = "hardskill_" + randomString;
+      this.imageService.uploadImage($event, name);
+      console.log("El hard.img es 1 : " + this.hard.img)
+    console.log("El img url es 1: " + this.imageService.url);
   }
-
   onCreate(): void {
     this.hard = this.formulario.value;
-    this.hard.img = this.imageService.url;
-    console.log("hard img" + this.hard.img);
-    const hardskill = new HardSkills(this.hard.nombre, this.hard.porcentaje, this.imageService.url);
+    if(this.imageService.url != "") {
+      this.hard.img = this.imageService.url;
+    }
+    //this.hard.img = this.imageService.url
+    console.log("El hard.img es : " + this.hard.img)
+    console.log("El img url es: " + this.imageService.url);
     
+    const hardskill = new HardSkills(this.hard.nombre, this.hard.porcentaje, this.hard.img);
+   
     this.sHard.save(hardskill).subscribe(data => {
       alert("Hard-Skill añadida con éxito.");
       this.router.navigate(['']);
@@ -46,7 +56,7 @@ export class NewHardskillsComponent implements OnInit{
       this.router.navigate(['']);
     })
     //this.imageService.clearURL();
-    this.imagesURLS.push(this.imageService.url);
+    //this.imagesURLS.push(this.imageService.url);
   } 
   
 }

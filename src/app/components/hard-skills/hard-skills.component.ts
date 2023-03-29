@@ -41,6 +41,7 @@ export class HardSkillsComponent implements OnInit{
         domEl.classList.add('to-right');
       }
   });
+  this.imageService.clearURL();
   }
   
 

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HardSkills } from 'src/app/model/hard-skills';
 import { HardSkillsService } from 'src/app/services/hard-skills.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-edit-hardskills',
@@ -15,7 +16,7 @@ export class EditHardskillsComponent implements OnInit{
   formulario: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private sHard: HardSkillsService, private activatedRouter: ActivatedRoute, 
-    private router: Router) {
+    private router: Router, private imageService: ImageService) {
       this.formulario = new FormGroup({
         nombre: new FormControl(),
         porcentaje: new FormControl(),
@@ -38,6 +39,9 @@ export class EditHardskillsComponent implements OnInit{
     onUpdate() : void {
       const { nombre, porcentaje } = this.formulario.value;
       this.Hskill = this.formulario.value;
+      if(this.imageService.url != "") {
+        this.Hskill.img = this.imageService.url;
+      }
       const id = this.activatedRouter.snapshot.params['id'];
       this.sHard.update(id, this.Hskill).subscribe(
         data => {
@@ -47,5 +51,11 @@ export class EditHardskillsComponent implements OnInit{
           this.router.navigate(['']);
         }
       )
+    }
+    uploadImage($event:any): void {   
+      this.imageService.clearURL();
+        const randomString = Math.random().toString(36).substring(2, 17);
+        const name = "hardskill_" + randomString;
+        this.imageService.uploadImage($event, name);
     }
 }

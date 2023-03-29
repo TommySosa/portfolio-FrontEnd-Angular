@@ -1,40 +1,62 @@
-import { Injectable } from '@angular/core';
-import { Storage, ref, uploadBytes, list, getDownloadURL } from '@angular/fire/storage';
+import { Injectable, OnInit } from '@angular/core';
+import { Storage, ref, uploadBytes, list, getDownloadURL, getMetadata } from '@angular/fire/storage';
 import { finalize, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ImageService {
+export class ImageService implements OnInit{
   url: string = "";
+
+  urlImg: string = "";
+  nombre:string = "";
   constructor(private storage: Storage) { }
 
-
+  ngOnInit(): void {
+    this.clearURL();
+  }
   public uploadImage($event: any, name: string ): void {
     const file = $event.target.files[0]
     const imgRef = ref(this.storage, `imagen/`+ name)
     uploadBytes(imgRef, file)
-    .then(response => {this.getImages()})
+    .then(response => {
+      console.log("La imagen se ha cargado correctamente.");
+      this.getImages(name);
+    })
     .catch(error => console.log(error))
-
-    console.log(file);
+    this.clearURL();
   }
-
-  getImages() {
-
+  getImages(nombre:string) {
     const imagesRef = ref(this.storage, 'imagen')
     list(imagesRef)
     .then(async response => {
       for(let item of response.items){
-        this.url = await getDownloadURL(item); 
-        console.log("La URL es: " + this.url);
+        const metadata = await getMetadata(item);
+        if (metadata.name === nombre) {
+          this.url = await getDownloadURL(item); 
+          console.log("La URL es: " + this.url);
+        }
       }
     })
     .catch(error => console.log(error))
-    
   }
-
+  
+  // getImages() {
+  //   const imagesRef = ref(this.storage, 'imagen')
+  //   list(imagesRef)
+  //   .then(async response => {
+  //     for(let item of response.items){
+  //       this.url = await getDownloadURL(item); 
+  //       console.log("La URL es: " + this.url);
+        
+  //     }
+  //   })
+  //   .catch(error => console.log(error))
+  // }
+  
+  
   clearURL(){
     this.url = "";
+    this.urlImg = "";
   }
 }
 
