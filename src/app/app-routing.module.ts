@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditCapacitacionesComponent } from './components/capacitaciones/edit-capacitaciones.component';
+import { NewCapacitacionesComponent } from './components/capacitaciones/new-capacitaciones.component';
 import { EditEstudiosComponent } from './components/estudios/edit-estudios.component';
 import { EstudiosComponent } from './components/estudios/estudios.component';
 import { NewestudiosComponent } from './components/estudios/newestudios.component';
@@ -10,6 +12,10 @@ import { NewHardskillsComponent } from './components/hard-skills/new-hardskills.
 import { EditInicioComponent } from './components/inicio/edit-inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { EditProyectoComponent } from './components/proyectos/edit-proyecto.component';
+import { NewProyectoComponent } from './components/proyectos/new-proyecto.component';
+import { EditSoftskillsComponent } from './components/soft-skills/edit-softskills.component';
+import { NewSoftskillsComponent } from './components/soft-skills/new-softskills.component';
 
 
 const routes: Routes = [
@@ -22,7 +28,14 @@ const routes: Routes = [
   { path: 'editest/:id', component : EditEstudiosComponent},
   { path: 'nuevahk', component: NewHardskillsComponent},
   { path: 'edithard/:id', component: EditHardskillsComponent},
-  { path: 'editarinicio/:id' , component: EditInicioComponent}
+  { path: 'editarinicio/:id' , component: EditInicioComponent},
+  { path: 'nuevask', component: NewSoftskillsComponent},
+  { path: 'editsoft/:id', component:EditSoftskillsComponent},
+  { path: 'nuevacap', component: NewCapacitacionesComponent},
+  { path: 'editcap/:id', component:EditCapacitacionesComponent},
+  { path: 'nuevoproy', component: NewProyectoComponent},
+  { path: 'editproy/:id', component:EditProyectoComponent},
+  
 
 ];
 

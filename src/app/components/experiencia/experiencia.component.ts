@@ -3,6 +3,7 @@ import { Experiencia } from 'src/app/model/experiencia';
 import { SExperienciaService } from 'src/app/services/s-experiencia.service';
 import { TokenService } from 'src/app/services/token.service';
 import ScrollReveal from 'scrollreveal';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -40,17 +41,27 @@ export class ExperienciaComponent implements OnInit{
   cargarExperiencia():void{
     this.sExperiencia.lista().subscribe(data => {this.expe = data;})
   }
-
-  delete(id?: number): void {
-    console.log("id: " + id);
-    if(id != undefined ) {
-      this.sExperiencia.delete(id).subscribe(
-        data => {
-          this.cargarExperiencia();
-        },err =>{
-          alert("No se pudo borrar la experiencia");
+  delete(id:number) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'No podrás deshacer esta acción',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if( id != undefined){
+          this.sExperiencia.delete(id).subscribe(
+            data => {
+              this.cargarExperiencia();
+            }, err => {
+              alert("No se pudo eliminar");
+            }
+          )
         }
-      );
-    }
+        console.log('Elemento eliminado');
+      }
+    });
   }
 }

@@ -1,4 +1,4 @@
-<h1 class="text-center m-5">Estudios</h1>
+<h1 class="text-center m-5" id="estudios">Estudios</h1>
 <div class="text-center mb-5">
   <button type="button" class="btn btn-success" routerLink="/nuevoest" *ngIf="isLogged">
     Nuevo estudio
@@ -10,7 +10,7 @@
   <div class="row to-right">
     <div class="col" *ngFor="let Estudios of estudios">
       <div class="card bg-dark" style="width: 20.4rem; border: 2px solid #25fc98;">
-        <img src="/assets/utn-removebg-preview.png" class="card-img-top" alt="...">
+        <img src={{Estudios.img}} class="card-img-top" alt="...">
         <h5 class="card-title text-center">{{Estudios.nombreE}}</h5>
         <div class="card-body">
           <p class="card-text">{{Estudios.descripcionE}}</p>
@@ -22,7 +22,7 @@
       </div>
     </div>
     
-    <div class="col">
+    <!-- <div class="col">
       <div class="card bg-dark" style="width: 18rem; border: 2px solid #25fc98;">
         <img src="/assets/abejitas-removebg-preview.png" class="card-img-top" alt="...">
         <h5 class="card-title text-center">Estudios secundarios articulado con el Trayecto Técnico Profesional en Informática</h5>
@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

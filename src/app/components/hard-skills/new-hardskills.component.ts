@@ -42,9 +42,6 @@ export class NewHardskillsComponent implements OnInit{
     if(this.imageService.url != "") {
       this.hard.img = this.imageService.url;
     }
-    //this.hard.img = this.imageService.url
-    console.log("El hard.img es : " + this.hard.img)
-    console.log("El img url es: " + this.imageService.url);
     
     const hardskill = new HardSkills(this.hard.nombre, this.hard.porcentaje, this.hard.img);
    

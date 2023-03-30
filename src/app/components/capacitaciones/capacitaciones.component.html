@@ -1,18 +1,26 @@
 
-    <h1 class="text-center mt-5 mb-5 titulo" id="capacitaciones">Capacitaciones</h1>
-
+<h1 class="text-center mt-5 mb-5 titulo" id="capacitaciones">Capacitaciones</h1>
+<div class="text-center mb-5">
+  <button type="button" class="btn btn-success" routerLink="/nuevacap" *ngIf="isLogged">
+    Nueva capacitacion
+  </button>
+</div>
   <div class="container-fluid d-flex justify-content-center">
     <div class="row to-right">
-      <div class="col">
+      <div class="col" *ngFor="let Capacitacion of capacitacion">
         <div class="card bg-dark" style="width: 18rem; border: 2px solid #25fc98;">
-          <img src="/assets/globallearning.jpg" class="card-img-top">
-          <h5 class="card-title text-center">Curso de especialización en .NET (Por Global Learning).</h5>
+          <img src={{Capacitacion.img}} class="card-img-top">
+          <h5 class="card-title text-center">{{Capacitacion.nombre}}</h5>
           <div class="card-body">
-            <p class="card-text">5 de oct. 2022 - 12 de dic. 2022</p>
+            <p class="card-text">{{Capacitacion.periodo}}</p>
+            <div class="d-flex justify-content-between align-items-center" *ngIf="isLogged">
+              <button class="btn btn-sm btn-warning mr-2" routerLink="/editcap/{{Capacitacion.id}}"><i class="fa-regular fa-pen-to-square"></i></button>
+              <button class="btn btn-sm btn-danger" (click)="delete(Capacitacion.id)"><i class="fa-solid fa-trash"></i></button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <div class="card bg-dark" style="width: 20rem; border: 2px solid #25fc98;">
           <img src="/assets/argPrograma2.png" class="card-img-top" alt="...">
           <h5 class="card-title text-center">Argentina Programa</h5>
@@ -29,7 +37,38 @@
             <p class="card-text">Agosto 2020</p>
           </div>
         </div>
-      </div>
+      </div> -->
       
     </div>
   </div>
+  <!-- <div class="col" *ngFor="let Capacitacion of capacitacion">
+    <div class="card bg-dark" style="width: 18rem; border: 2px solid #25fc98;">
+      <img src="/assets/globallearning.jpg" class="card-img-top">
+      <h5 class="card-title text-center">Curso de especialización en .NET (Por Global Learning).</h5>
+      <div class="card-body">
+        <p class="card-text">5 de oct. 2022 - 12 de dic. 2022</p>
+        <div class="d-flex justify-content-between align-items-center" *ngIf="isLogged">
+          <button class="btn btn-sm btn-warning mr-2" routerLink="/editest/{{Capacitacion.id}}"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button class="btn btn-sm btn-danger" (click)="delete(Capacitacion.id)"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card bg-dark" style="width: 20rem; border: 2px solid #25fc98;">
+      <img src="/assets/argPrograma2.png" class="card-img-top" alt="...">
+      <h5 class="card-title text-center">Argentina Programa</h5>
+      <div class="card-body">
+        <p class="card-text">2 de feb. 2022 - Actualidad.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card bg-dark" style="width: 18rem; border: 2px solid #25fc98;">
+      <img src="/assets/google.jpg" class="card-img-top" width="80">
+      <h5 class="card-title text-center">Habilidades Digitales Esenciales (Por Google For Education)</h5>
+      <div class="card-body">
+        <p class="card-text">Agosto 2020</p>
+      </div>
+    </div>
+  </div> -->

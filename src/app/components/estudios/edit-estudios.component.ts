@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Estudios } from 'src/app/model/estudios';
 import { EstudiosService } from 'src/app/services/estudios.service';
+import { ImageService } from 'src/app/services/image.service';
 import { SExperienciaService } from 'src/app/services/s-experiencia.service';
 
 @Component({
@@ -16,10 +17,11 @@ export class EditEstudiosComponent implements OnInit{
   form: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private sEstudios: EstudiosService, private activatedRouter: ActivatedRoute, 
-    private router: Router) {
+    private router: Router, private imageService:ImageService) {
       this.form = new FormGroup({
         nombreE: new FormControl(),
         descripcionE: new FormControl(),
+        img: new FormControl()
   
       });
     }
@@ -30,23 +32,32 @@ export class EditEstudiosComponent implements OnInit{
       data => {
         this.estudios = data;
       }, err =>{
-        alert("Error al modificar experiencia");
+        alert("Error al modificar estudio");
         this.router.navigate(['']);
       }
     )
   }
 
   onUpdate() : void {
-    const { nombreE, descripcionE } = this.form.value;
+    const { nombreE, descripcionE, img } = this.form.value;
     this.estudios = this.form.value;
+    if(this.imageService.url != "") {
+      this.estudios.img = this.imageService.url;
+    }
     const id = this.activatedRouter.snapshot.params['id'];
     this.sEstudios.update(id, this.estudios).subscribe(
       data => {
         this.router.navigate(['']);
       }, err => {
-        alert("Error al modificar la experiencia");
+        alert("Error al modificar el estudio");
         this.router.navigate(['']);
       }
     )
+  }
+  uploadImage($event:any): void {   
+    this.imageService.clearURL();
+      const randomString = Math.random().toString(36).substring(2, 17);
+      const name = "estudios_" + randomString;
+      this.imageService.uploadImage($event, name);
   }
 }

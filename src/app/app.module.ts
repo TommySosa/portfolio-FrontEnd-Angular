@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { SobreMiComponent } from './components/sobre-mi/sobre-mi.component';
 import { EstudiosComponent } from './components/estudios/estudios.component';
 import { CapacitacionesComponent } from './components/capacitaciones/capacitaciones.component';
 import { HardSkillsComponent } from './components/hard-skills/hard-skills.component';
@@ -32,13 +31,19 @@ import { EditInicioComponent } from './components/inicio/edit-inicio.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { EditSoftskillsComponent } from './components/soft-skills/edit-softskills.component';
+import { NewSoftskillsComponent } from './components/soft-skills/new-softskills.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NewCapacitacionesComponent } from './components/capacitaciones/new-capacitaciones.component';
+import { EditCapacitacionesComponent } from './components/capacitaciones/edit-capacitaciones.component';
+import { NewProyectoComponent } from './components/proyectos/new-proyecto.component';
+import { EditProyectoComponent } from './components/proyectos/edit-proyecto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     InicioComponent,
-    SobreMiComponent,
     EstudiosComponent,
     CapacitacionesComponent,
     HardSkillsComponent,
@@ -54,7 +59,13 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     EditEstudiosComponent,
     EditHardskillsComponent,
     NewHardskillsComponent,
-    EditInicioComponent
+    EditInicioComponent,
+    EditSoftskillsComponent,
+    NewSoftskillsComponent,
+    NewCapacitacionesComponent,
+    EditCapacitacionesComponent,
+    NewProyectoComponent,
+    EditProyectoComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +77,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     FormsModule,
     CommonModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     interceptorProvider

@@ -1,19 +1,26 @@
 <div class="container">
-    <div class="row">
-        <div>
+        <div class="d-flex justify-content-center mt-5" style="margin-bottom: 12rem;">
             <form (ngSubmit)="onCreate()" [formGroup]="formulario">
-                <div class="form-group">
-                    <label for="nombreE">Nombre</label>
-                    <input type="text" class="form-control" id="nombreE" name="nombreE" ngModel="nombreE" required formControlName="nombreE">
+                <div class="m-3">
+                    <a href=""><i class="fa-solid fa-arrow-left"></i> Volver</a>
                 </div>
-                <div class="form-group">
+                <div class="form-group mx-3">
+                    <label for="nombreE" class="m-1">Nombre</label>
+                    <input type="text" class="form-control" id="nombreE" name="nombreE" required formControlName="nombreE">
+                </div>
+                <div class="form-group mx-3">
                     <label for="descripcionE">Descripcion</label>
-                    <input type="text" class="form-control" id="descripcionE" name="descripcionE" ngModel="descripcionE" required formControlName="descripcionE">
+                    <input type="text" class="form-control" id="descripcionE" name="descripcionE" required formControlName="descripcionE">
                 </div>
-                <button class="btn btn-primary" >
+                <div class="form-group mx-3">
+                    <label for="img">Imagen</label>
+                    <input type="file" class="form-control" id="img" name="img" required formControlName="img" (change)="uploadImage($event)" accept=".jpg, .jpeg, .png">
+                </div>
+                
+                <button class="btn btn-primary m-3" >
                     Agregar estudio
                 </button>
             </form>
         </div>
-    </div>
-</div>
+</div> 
+

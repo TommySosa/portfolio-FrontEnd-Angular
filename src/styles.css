@@ -40,6 +40,20 @@ h1{
   position: fixed;
   z-index: -1;
 }
+*::-webkit-scrollbar{
+  width: 15px;
+}
+*::-webkit-scrollbar-thumb{
+  background-color: #25fc98;
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover{
+  background-color: #047540;
+  border-radius: 10px;
+}
+*::-webkit-scrollbar-track{
+  background-color: transparent;
+}
 
 /*
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {

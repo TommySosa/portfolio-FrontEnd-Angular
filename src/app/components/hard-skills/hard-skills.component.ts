@@ -6,6 +6,7 @@ import { HardSkills } from 'src/app/model/hard-skills';
 import { HardSkillsService } from 'src/app/services/hard-skills.service';
 import { ImageService } from 'src/app/services/image.service';
 import { TokenService } from 'src/app/services/token.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -60,16 +61,28 @@ export class HardSkillsComponent implements OnInit{
       }
     )
   }
-  delete(id: number){
-    if(id != undefined){
-      this.sHard.delete(id).subscribe(
-        data => {
-          this.cargarSkills();
-        }, err => {
-          alert("No se pudo borrar la skill");
+  delete(id:number) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'No podrás deshacer esta acción',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if( id != undefined){
+          this.sHard.delete(id).subscribe(
+            data => {
+              this.cargarSkills();
+            }, err => {
+              alert("No se pudo eliminar");
+            }
+          )
         }
-      )
-    }
+        console.log('Elemento eliminado');
+      }
+    });
   }
 }
 
