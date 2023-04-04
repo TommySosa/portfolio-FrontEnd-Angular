@@ -7,8 +7,8 @@ import { SoftSkills } from '../model/soft-skills';
   providedIn: 'root'
 })
 export class SoftSkillsService {
-  URL = 'http://localhost:8080/softskills/';
-  //URL = 'https://tomassosa-tomasfacundososa.b4a.run/softskills/';
+  //URL = 'http://localhost:8080/softskills/';
+  URL = 'https://tomassosa-tomasfacundososa.b4a.run/softskills/';
   //URL = environment.serverURL + 'softskills/';
   constructor(private httpClient : HttpClient) { }
 
