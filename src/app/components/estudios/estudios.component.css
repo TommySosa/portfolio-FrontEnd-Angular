@@ -1,4 +1,4 @@
-.parent {
+/* .parent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -11,4 +11,4 @@
 .div3 { grid-area: 2 / 4 / 3 / 5; }
 .div4 { grid-area: 3 / 2 / 4 / 3; }
 .div5 { grid-area: 3 / 3 / 4 / 4; }
-.div6 { grid-area: 3 / 4 / 4 / 5; }
+.div6 { grid-area: 3 / 4 / 4 / 5; } */

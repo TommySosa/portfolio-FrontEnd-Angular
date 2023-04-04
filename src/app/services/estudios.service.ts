@@ -9,7 +9,6 @@ import { Estudios } from '../model/estudios';
 })
 export class EstudiosService {
   URL = 'http://localhost:8080/educacion/';
-  //URL = 'http://tomassosa.fly.dev/educacion/';
   //URL = 'https://tomassosa-tomasfacundososa.b4a.run/educacion/';
   //URL = environment.serverURL + 'educacion/';
   constructor(private httpClient : HttpClient) { }

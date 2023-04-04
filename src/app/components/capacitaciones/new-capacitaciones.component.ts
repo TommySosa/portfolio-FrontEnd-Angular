@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Capacitacion } from 'src/app/model/capacitacion';
 import { CapacitacionService } from 'src/app/services/capacitacion.service';
 import { ImageService } from 'src/app/services/image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-capacitaciones',
@@ -37,11 +38,25 @@ export class NewCapacitacionesComponent implements OnInit{
     const capacitacion = new Capacitacion(this.capa.nombre, this.capa.periodo, this.capa.img);
     
     this.sCapacitacion.save(capacitacion).subscribe(data => {
-      alert("Capacitación añadida con éxito.");
-      this.router.navigate(['']);
+      Swal.fire(
+        'Operación exitosa!',
+        'Capacitación añadida con éxito!',
+        'success'
+      ).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     }, err => {
-      alert("Falló");
-      this.router.navigate(['']);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al agregar la capacitación!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     })
   }
 }

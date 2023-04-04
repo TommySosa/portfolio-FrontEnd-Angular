@@ -1,79 +1,31 @@
 <div class="container ">
-    <h1 class="text-center mt-5 mb-5 titulo" id="proyectos">Proyectos</h1>
-    <div class="text-center mb-5">
-      <button type="button" class="btn btn-success" routerLink="/nuevoproy" *ngIf="isLogged">
-        Nuevo proyecto
-      </button>
-    </div>
-    <div id="carouselExampleCaptions" class="carousel slide to-right" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1" ></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-          aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-          aria-label="Slide 4" *ngIf="proyectos.length > 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
-          aria-label="Slide 5" *ngIf="proyectos.length > 3"></button>  
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
-          aria-label="Slide 6" *ngIf="proyectos.length > 4"></button>  
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6"
-          aria-label="Slide 7" *ngIf="proyectos.length > 5"></button>  
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="../../../assets/imagenes/TiendaMVC.png" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block text-dark">
-            <div class="sombreado">
-              <h5 class="card-title">E-Commerce active</h5>
-              <p class="card-text">Aplicación web desarrollada en .NET Core MVC y EntityFramework Core.</p><br>
-              <a href="#" class="btn btn-outline-light">Link</a>
-              <a href="#" class="btn btn-outline-light">Github</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item" *ngFor="let Proyectos of proyectos">
-          <img src={{Proyectos.img}} class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block text-dark">
-            <div class="sombreado">
+  <h1 class="text-center mt-5 mb-5 titulo" id="proyectos">Proyectos</h1>
+  <div class="text-center mb-5">
+    <button type="button" class="btn btn-success" routerLink="/nuevoproy" *ngIf="isLogged">
+      Nuevo proyecto
+    </button>
+  </div>
+  <section class="projects">
+    <div class="container">
+      <div class="row to-right">
+        <!-- aquí irán las tarjetas -->
+        <div class="col-sm-6 col-md-4" *ngFor="let Proyectos of proyectos">
+          <div class="card">
+            <img class="card-img-top" src="{{Proyectos.img}}" alt="{{Proyectos.nombre}}">
+            <div class="card-body">
               <h5 class="card-title">{{Proyectos.nombre}}</h5>
               <p class="card-text">{{Proyectos.descripcion}}</p>
-              <a href={{Proyectos.linkUrl}}
-                target="_blank" class="btn btn-outline-light">Link</a>
-              <a href="{{Proyectos.githubUrl}}" class="btn btn-outline-light" target="_blank">Github</a>
-            </div>
-            <div class="d-flex justify-content-start align-items-center" *ngIf="isLogged">
-              <button class="btn btn-sm btn-warning mr-2" routerLink="/editproy/{{Proyectos.id}}"><i class="fa-regular fa-pen-to-square"></i></button>
-              <button class="btn btn-sm btn-danger" (click)="delete(Proyectos.id)"><i class="fa-solid fa-trash"></i></button>
+              <a href="{{Proyectos.linkUrl}}" class="btn boton btn-outline-light mx-3" target="_blank">Link</a>
+              <a href="{{Proyectos.githubUrl}}" class="btn boton btn-outline-light" target="_blank">Github</a>
+              <div class="d-flex justify-content-end align-items-center" *ngIf="isLogged">
+                <button class="btn btn-sm btn-warning mr-2" routerLink="/editproy/{{Proyectos.id}}"><i class="fa-regular fa-pen-to-square"></i></button>
+                <button class="btn btn-sm btn-danger" (click)="delete(Proyectos.id)"><i class="fa-solid fa-trash"></i></button>
+              </div>
             </div>
           </div>
         </div>
-        
-        <!-- <div class="carousel-item">
-          <img src="/assets/LaMAFIARS.png" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <div class="sombreado">
-              <h5 class="card-title">La Mafia Red Social</h5>
-              <p class="card-tex">Red social para un grupo de amigos desarrollada con .NET Core MVC y EntityFramework Core.
-              Con roles de usuarios y salas de chats en tiempo real con SignalR.
-              </p>
-              <a href="http://la-mafia-rs.somee.com" target="_blank" class="btn btn-outline-light">Link</a>
-              <a href="https://github.com/TommySosa/LaMafiaRS" target="_blank" class="btn btn-outline-light">Github</a>
-            </div>
-          </div>
-        </div> -->
+
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-  </div>
+  </section>
+</div>

@@ -1,0 +1,24 @@
+.projects .card {
+    margin-bottom: 30px;
+    color: #fff;
+    background-color: #212529;
+    border: 2px solid #25fc98;
+  }
+  
+  /* @media (min-width: 768px) {
+    .projects .card {
+      position: relative;
+      overflow: hidden;
+    }
+    .projects .card .card-body {
+      position: absolute;
+      top: 10px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.7);
+      color: #fff;
+      padding: 20px;
+    }
+  } */
+  

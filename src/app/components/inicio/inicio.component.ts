@@ -36,6 +36,23 @@ export class InicioComponent implements OnInit {
     });
 
   }
+  downloadPDF() {
+    const pdfUrl = 'https://firebasestorage.googleapis.com/v0/b/tomassosa-df065.appspot.com/o/CVActual_editado.pdf?alt=media&token=4c19c549-cb76-4a53-a54c-92d6e9b44bad'; // Reemplaza con la URL del archivo PDF que quieres descargar
+    const pdfName = 'cv-tomassosa.pdf'; // Reemplaza con el nombre que quieres darle al archivo PDF
+  
+    fetch(pdfUrl)
+      .then(response => response.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = pdfName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+  }
   cargarPersona(){
     this.personaService.detail(1).subscribe(
       data => {

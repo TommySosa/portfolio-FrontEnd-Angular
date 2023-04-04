@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia';
 import { SExperienciaService } from 'src/app/services/s-experiencia.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-experiencia',
@@ -41,10 +42,25 @@ export class EditExperienciaComponent implements OnInit{
     const id = this.activatedRouter.snapshot.params['id'];
     this.sExperiencia.update(id, this.expLab).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire(
+          'Operación exitosa!',
+          'Experiencia editada con exito!',
+          'success'
+        ).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }, err => {
-        alert("Error al modificar la experiencia");
-        this.router.navigate(['']);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Error al editar la experiencia!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }
     )
   }

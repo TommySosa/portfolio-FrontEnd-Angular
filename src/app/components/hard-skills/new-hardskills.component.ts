@@ -5,6 +5,7 @@ import { HardSkills } from 'src/app/model/hard-skills';
 import { HardSkillsService } from 'src/app/services/hard-skills.service';
 import { ImageService } from 'src/app/services/image.service';
 import { Storage, ref, uploadBytes, list, getDownloadURL } from '@angular/fire/storage';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-hardskills',
@@ -17,7 +18,7 @@ export class NewHardskillsComponent implements OnInit{
   nombre: FormControl;
   porcentaje: FormControl;
   img: FormControl;
-  imagesURLS : string[] = [];
+  porcentajeView: number = 0;
   constructor(private formBuilder:FormBuilder,private sHard: HardSkillsService, private router: Router, private activatedRouter: ActivatedRoute,public imageService: ImageService, private storage: Storage) {
      this.formulario = new FormGroup({
        nombre: new FormControl(),
@@ -27,6 +28,9 @@ export class NewHardskillsComponent implements OnInit{
   }
   ngOnInit(): void {
     this.imageService.clearURL();  
+  }
+  actualizarPorcentaje() {
+    this.porcentajeView = Number((<HTMLInputElement>document.getElementById('porcentaje')).value);
   }
   
   uploadImage($event:any): void {   
@@ -46,14 +50,26 @@ export class NewHardskillsComponent implements OnInit{
     const hardskill = new HardSkills(this.hard.nombre, this.hard.porcentaje, this.hard.img);
    
     this.sHard.save(hardskill).subscribe(data => {
-      alert("Hard-Skill añadida con éxito.");
-      this.router.navigate(['']);
+      Swal.fire(
+        'Operación exitosa!',
+        'Hard-Skill añadida con exito!',
+        'success'
+      ).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     }, err => {
-      alert("Falló");
-      this.router.navigate(['']);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al agregar la Hard-Skill!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     })
-    //this.imageService.clearURL();
-    //this.imagesURLS.push(this.imageService.url);
   } 
   
 }

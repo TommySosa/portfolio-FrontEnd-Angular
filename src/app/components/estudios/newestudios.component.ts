@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Estudios } from 'src/app/model/estudios';
 import { EstudiosService } from 'src/app/services/estudios.service';
 import { ImageService } from 'src/app/services/image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-newestudios',
@@ -30,7 +31,6 @@ export class NewestudiosComponent implements OnInit{
       this.imageService.uploadImage($event, name);
   }
   onCreate(): void {
-    //const { nombreE, descripcionE , img} = this.formulario.value;
     this.est = this.formulario.value;
     if(this.imageService.url != "") {
       this.est.img = this.imageService.url;
@@ -38,11 +38,25 @@ export class NewestudiosComponent implements OnInit{
     const expe = new Estudios(this.est.nombreE, this.est.descripcionE, this.est.img);
     
     this.sEstudios.save(expe).subscribe(data => {
-      alert("Estudio añadido con éxito.");
-      this.router.navigate(['']);
+      Swal.fire(
+        'Operación exitosa!',
+        'Estudio añadido con exito!',
+        'success'
+      ).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     }, err => {
-      alert("Falló");
-      this.router.navigate(['']);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al agregar el estudio!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     })
   }
 }

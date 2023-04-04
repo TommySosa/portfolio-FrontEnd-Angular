@@ -21,7 +21,7 @@
     "@angular/router": "^15.1.0",
     "@sweetalert2/ngx-sweetalert2": "^12.0.0",
     "circle-progress": "^1.0.0",
-    "jquery": "^3.6.3",
+    "jquery": "^3.6.4",
     "ng": "^0.0.0",
     "ng-circle-progress": "^1.7.1",
     "ng-particles": "^3.9.3",

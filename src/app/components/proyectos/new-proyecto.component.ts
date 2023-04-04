@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Proyectos } from 'src/app/model/proyectos';
 import { ImageService } from 'src/app/services/image.service';
 import { ProyectosService } from 'src/app/services/proyectos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-proyecto',
@@ -39,11 +40,25 @@ export class NewProyectoComponent implements OnInit{
     const proyecto = new Proyectos(this.proy.nombre, this.proy.descripcion,this.proy.linkUrl, this.proy.githubUrl, this.proy.img);
     
     this.sProyectos.save(proyecto).subscribe(data => {
-      alert("Proyecto añadida con éxito.");
-      this.router.navigate(['']);
+      Swal.fire(
+        'Operación exitosa!',
+        'Proyecto agregado con éxito!',
+        'success'
+      ).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     }, err => {
-      alert("Falló");
-      this.router.navigate(['']);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al agregar el proyecto!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     })
   }
 }

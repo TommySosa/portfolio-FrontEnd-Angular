@@ -4,6 +4,7 @@ import { Proyectos } from 'src/app/model/proyectos';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TokenService } from 'src/app/services/token.service';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-proyectos',
   templateUrl: './proyectos.component.html',
@@ -17,6 +18,7 @@ export class ProyectosComponent implements OnInit{
 
   isLogged = false;
   ngOnInit(): void {
+    
     this.cargarProyectos();
     if(this.tokenService.getToken()){
       this.isLogged = true;
@@ -42,6 +44,7 @@ export class ProyectosComponent implements OnInit{
       }
     )
   }
+  
   delete(id:number) {
     Swal.fire({
       title: '¿Estás seguro?',

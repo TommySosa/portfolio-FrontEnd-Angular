@@ -5,6 +5,7 @@ import { Estudios } from 'src/app/model/estudios';
 import { EstudiosService } from 'src/app/services/estudios.service';
 import { ImageService } from 'src/app/services/image.service';
 import { SExperienciaService } from 'src/app/services/s-experiencia.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-estudios',
@@ -17,7 +18,7 @@ export class EditEstudiosComponent implements OnInit{
   form: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private sEstudios: EstudiosService, private activatedRouter: ActivatedRoute, 
-    private router: Router, private imageService:ImageService) {
+    private router: Router, public imageService:ImageService) {
       this.form = new FormGroup({
         nombreE: new FormControl(),
         descripcionE: new FormControl(),
@@ -32,7 +33,6 @@ export class EditEstudiosComponent implements OnInit{
       data => {
         this.estudios = data;
       }, err =>{
-        alert("Error al modificar estudio");
         this.router.navigate(['']);
       }
     )
@@ -47,10 +47,25 @@ export class EditEstudiosComponent implements OnInit{
     const id = this.activatedRouter.snapshot.params['id'];
     this.sEstudios.update(id, this.estudios).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire(
+          'Operación exitosa!',
+          'Estudio editado con exito!',
+          'success'
+        ).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }, err => {
-        alert("Error al modificar el estudio");
-        this.router.navigate(['']);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Error al editar el estudio!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }
     )
   }

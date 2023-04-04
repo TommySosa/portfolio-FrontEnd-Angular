@@ -8,7 +8,6 @@ import { Proyectos } from '../model/proyectos';
 })
 export class ProyectosService {
   URL = 'http://localhost:8080/proyectos/';
-  //URL = 'http://tomassosa.fly.dev/proyectos/';
   //URL = 'https://tomassosa-tomasfacundososa.b4a.run/proyectos/';
   //URL = environment.serverURL + 'proyectos/';
   constructor(private httpClient : HttpClient) { }

@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <div>
                         <label for="porcentaje" class="form-label my-5 mx-3">Porcentaje</label>
-                        <input type="range" id="porcentaje" name="porcentaje" min="1" max="100" (input)="actualizarPorcentaje()">
+                        <input type="range" id="porcentaje" name="porcentaje" step="5" min="0" max="100" (input)="actualizarPorcentaje()">
                         <span id="valorPorcentaje" class="m-4">{{porcentajeView}}</span>
                     </div>
                 </div>

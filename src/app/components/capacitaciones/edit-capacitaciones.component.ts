@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Capacitacion } from 'src/app/model/capacitacion';
 import { CapacitacionService } from 'src/app/services/capacitacion.service';
 import { ImageService } from 'src/app/services/image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-capacitaciones',
@@ -16,7 +17,7 @@ export class EditCapacitacionesComponent {
   form: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private sCapacion: CapacitacionService, private activatedRouter: ActivatedRoute, 
-    private router: Router, private imageService:ImageService) {
+    private router: Router, public imageService:ImageService) {
       this.form = new FormGroup({
         nombre: new FormControl(),
         descripcion: new FormControl(),
@@ -31,7 +32,7 @@ export class EditCapacitacionesComponent {
       data => {
         this.capacitacion = data;
       }, err =>{
-        alert("Error al modificar la capacitacion");
+
         this.router.navigate(['']);
       }
     )
@@ -46,10 +47,25 @@ export class EditCapacitacionesComponent {
     const id = this.activatedRouter.snapshot.params['id'];
     this.sCapacion.update(id, this.capacitacion).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire(
+          'Operación exitosa!',
+          'Capacitación editada con éxito!',
+          'success'
+        ).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }, err => {
-        alert("Error al modificar la capacitacion");
-        this.router.navigate(['']);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Error al editar la capacitación!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }
     )
   }

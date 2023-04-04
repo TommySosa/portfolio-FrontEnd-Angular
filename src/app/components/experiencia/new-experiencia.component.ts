@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia';
 import { SExperienciaService } from 'src/app/services/s-experiencia.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, FormGroupDirective } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-experiencia',
@@ -30,11 +31,27 @@ export class NewExperienciaComponent implements OnInit{
     const expe = new Experiencia(nombreE, descripcionE);
     
     this.sExperiencia.save(expe).subscribe(data => {
-      alert("Experiencia añadida con éxito.");
-      this.router.navigate(['']);
+      Swal.fire(
+        'Operación exitosa!',
+        'Experiencia añadida con éxito!',
+        'success'
+      ).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
+
+
     }, err => {
-      alert("Falló");
-      this.router.navigate(['']);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al agregar la experiencia!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['']);
+        }
+      });
     })
   }
 

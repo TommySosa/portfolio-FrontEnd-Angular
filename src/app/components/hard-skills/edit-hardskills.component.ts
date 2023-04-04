@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HardSkills } from 'src/app/model/hard-skills';
 import { HardSkillsService } from 'src/app/services/hard-skills.service';
 import { ImageService } from 'src/app/services/image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-hardskills',
@@ -14,9 +15,10 @@ export class EditHardskillsComponent implements OnInit{
   Hskill : HardSkills = null;
 
   formulario: FormGroup;
+  porcentajeView: number = 0;
 
   constructor(private formBuilder:FormBuilder,private sHard: HardSkillsService, private activatedRouter: ActivatedRoute, 
-    private router: Router, private imageService: ImageService) {
+    private router: Router, public imageService: ImageService) {
       this.formulario = new FormGroup({
         nombre: new FormControl(),
         porcentaje: new FormControl(),
@@ -26,14 +28,16 @@ export class EditHardskillsComponent implements OnInit{
 
     ngOnInit(): void {
       const id = this.activatedRouter.snapshot.params['id'];
-      this.sHard.detail(id).subscribe(
-        data => {
-          this.Hskill = data;
-        }, err =>{
-          alert("Error al modificar la Hard-Skill");
-          this.router.navigate(['']);
-        }
-      )
+    this.sHard.detail(id).subscribe(
+      data => {
+        this.Hskill = data;
+      }, err =>{
+        this.router.navigate(['']);
+      }
+    )
+    }
+    actualizarPorcentaje() {
+      this.porcentajeView = Number((<HTMLInputElement>document.getElementById('porcentaje')).value);
     }
   
     onUpdate() : void {
@@ -45,10 +49,25 @@ export class EditHardskillsComponent implements OnInit{
       const id = this.activatedRouter.snapshot.params['id'];
       this.sHard.update(id, this.Hskill).subscribe(
         data => {
-          this.router.navigate(['']);
+          Swal.fire(
+            'Operación exitosa!',
+            'Hard-Skill editada con exito!',
+            'success'
+          ).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['']);
+            }
+          });
         }, err => {
-          alert("Error al modificar la Skill");
-          this.router.navigate(['']);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Error al editar la Hard-Skill!',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['']);
+            }
+          });
         }
       )
     }

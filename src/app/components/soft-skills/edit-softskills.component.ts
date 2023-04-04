@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SoftSkills } from 'src/app/model/soft-skills';
 import { SoftSkillsService } from 'src/app/services/soft-skills.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-softskills',
@@ -41,10 +42,25 @@ export class EditSoftskillsComponent implements OnInit{
     const id = this.activatedRouter.snapshot.params['id'];
     this.sSoft.update(id, this.skill).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire(
+          'Operación exitosa!',
+          'Soft-Skill editada con éxito!',
+          'success'
+        ).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }, err => {
-        alert("Error al modificar la Skill");
-        this.router.navigate(['']);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Error al editar la Soft-Skill!',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['']);
+          }
+        });
       }
     )
   }

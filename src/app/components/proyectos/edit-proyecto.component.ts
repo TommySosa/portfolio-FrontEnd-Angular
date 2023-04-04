@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Proyectos } from 'src/app/model/proyectos';
 import { ImageService } from 'src/app/services/image.service';
 import { ProyectosService } from 'src/app/services/proyectos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-proyecto',
@@ -16,7 +17,7 @@ export class EditProyectoComponent {
   formulario: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private sHard: ProyectosService, private activatedRouter: ActivatedRoute, 
-    private router: Router, private imageService: ImageService) {
+    private router: Router, public imageService: ImageService) {
       this.formulario = new FormGroup({
         nombre: new FormControl(),
         descripcion: new FormControl(),
@@ -33,7 +34,6 @@ export class EditProyectoComponent {
         data => {
           this.proyecto = data;
         }, err =>{
-          alert("Error al modificar el proyecto");
           this.router.navigate(['']);
         }
       )
@@ -47,10 +47,25 @@ export class EditProyectoComponent {
       const id = this.activatedRouter.snapshot.params['id'];
       this.sHard.update(id, this.proyecto).subscribe(
         data => {
-          this.router.navigate(['']);
+          Swal.fire(
+            'Operación exitosa!',
+            'Proyecto editado con éxito!',
+            'success'
+          ).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['']);
+            }
+          });
         }, err => {
-          alert("Error al modificar el proyecto");
-          this.router.navigate(['']);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Error al editar el proyecto!',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(['']);
+            }
+          });
         }
       )
     }
