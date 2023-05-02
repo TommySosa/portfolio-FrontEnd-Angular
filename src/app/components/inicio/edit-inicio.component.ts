@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { persona } from 'src/app/model/persona.model';
-import { EstudiosService } from 'src/app/services/estudios.service';
 import { ImageService } from 'src/app/services/image.service';
 import { PersonaService } from 'src/app/services/persona.service';
 
@@ -13,7 +12,6 @@ import { PersonaService } from 'src/app/services/persona.service';
 })
 export class EditInicioComponent implements OnInit{
   persona : persona = null;
-  nombre : string = "Tomi";
   form: FormGroup;
 
   constructor(private formBuilder:FormBuilder,private sPersona: PersonaService, private activatedRouter: ActivatedRoute, 
@@ -57,8 +55,8 @@ export class EditInicioComponent implements OnInit{
   }
 
   uploadImage($event:any): void {
-    const id = this.activatedRouter.snapshot.params['id'];
-    const name = "perfil_" + id;
+    const randomString = Math.random().toString(36).substring(2, 17);
+    const name = "perfil_" + randomString;
     this.imageService.uploadImage($event, name);
   }
 }

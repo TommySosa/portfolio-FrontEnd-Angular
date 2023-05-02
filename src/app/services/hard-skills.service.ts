@@ -9,7 +9,8 @@ import { HardSkills } from '../model/hard-skills';
 })
 export class HardSkillsService {
   //URL = 'http://localhost:8080/hardskills/';
-  URL = 'https://tomassosa-tomasfacundososa.b4a.run/hardskills/';
+  //URL = 'https://tomassosa-tomasfacundososa.b4a.run/hardskills/';
+  URL = 'https://portfolio-backend-m1qz.onrender.com/hardskills/';
   //URL = environment.serverURL + 'hardskills/';
   constructor(private httpClient : HttpClient) { }
 

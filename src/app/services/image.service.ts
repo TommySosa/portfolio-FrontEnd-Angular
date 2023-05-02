@@ -1,6 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Storage, ref, uploadBytes, list, getDownloadURL, getMetadata } from '@angular/fire/storage';
-import { finalize, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -40,18 +39,6 @@ export class ImageService implements OnInit{
     .catch(error => console.log(error))
   }
   
-  // getImages() {
-  //   const imagesRef = ref(this.storage, 'imagen')
-  //   list(imagesRef)
-  //   .then(async response => {
-  //     for(let item of response.items){
-  //       this.url = await getDownloadURL(item); 
-  //       console.log("La URL es: " + this.url);
-        
-  //     }
-  //   })
-  //   .catch(error => console.log(error))
-  // }
   
   
   clearURL(){

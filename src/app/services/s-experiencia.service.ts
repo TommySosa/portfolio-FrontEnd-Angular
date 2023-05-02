@@ -9,7 +9,8 @@ import { Experiencia } from '../model/experiencia';
 })
 export class SExperienciaService {
   //expURL = 'http://localhost:8080/explab/';
-  expURL = 'https://tomassosa-tomasfacundososa.b4a.run/explab/';
+  //expURL = 'https://tomassosa-tomasfacundososa.b4a.run/explab/';
+  expURL = 'https://portfolio-backend-m1qz.onrender.com/explab/';
   //expURL= environment.serverURL + 'explab/';
 
 

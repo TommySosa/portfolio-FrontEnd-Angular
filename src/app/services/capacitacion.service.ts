@@ -8,7 +8,8 @@ import { Capacitacion } from '../model/capacitacion';
 })
 export class CapacitacionService {
   //URL = 'http://localhost:8080/capacitacion/';
-  URL = 'https://tomassosa-tomasfacundososa.b4a.run/capacitacion/';
+  //URL = 'https://tomassosa-tomasfacundososa.b4a.run/capacitacion/';
+  URL = 'https://portfolio-backend-m1qz.onrender.com/capacitacion/';
   //URL = environment.serverURL + 'capacitacion/';
   constructor(private httpClient : HttpClient) { }
 

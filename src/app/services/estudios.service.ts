@@ -9,7 +9,8 @@ import { Estudios } from '../model/estudios';
 })
 export class EstudiosService {
   //URL = 'http://localhost:8080/educacion/';
-  URL = 'https://tomassosa-tomasfacundososa.b4a.run/educacion/';
+  //URL = 'https://tomassosa-tomasfacundososa.b4a.run/educacion/';
+  URL = 'https://portfolio-backend-m1qz.onrender.com/educacion/';
   //URL = environment.serverURL + 'educacion/';
   constructor(private httpClient : HttpClient) { }
 

@@ -8,7 +8,8 @@ import { Proyectos } from '../model/proyectos';
 })
 export class ProyectosService {
   //URL = 'http://localhost:8080/proyectos/';
-  URL = 'https://tomassosa-tomasfacundososa.b4a.run/proyectos/';
+  //URL = 'https://tomassosa-tomasfacundososa.b4a.run/proyectos/';
+  URL = 'https://portfolio-backend-m1qz.onrender.com/proyectos/';
   //URL = environment.serverURL + 'proyectos/';
   constructor(private httpClient : HttpClient) { }
 

@@ -11,7 +11,8 @@ import { persona } from '../model/persona.model';
 })
 export class PersonaService {
   //URL = 'http://localhost:8080/personas/';
-  URL = 'https://tomassosa-tomasfacundososa.b4a.run/personas/';
+  //URL = 'https://tomassosa-tomasfacundososa.b4a.run/personas/';
+  URL = 'https://portfolio-backend-m1qz.onrender.com/personas/';
   //URL = environment.serverURL + 'personas/';
 
   constructor(private httpClient: HttpClient) { }
