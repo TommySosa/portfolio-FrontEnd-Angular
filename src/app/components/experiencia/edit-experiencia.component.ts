@@ -37,8 +37,11 @@ export class EditExperienciaComponent implements OnInit{
   }
 
   onUpdate() : void {
-    const { nombreE, descripcionE } = this.form.value;
-    this.expLab = this.form.value;
+    //const { nombreE, descripcionE } = this.form.value;
+    if(this.form.value){
+      this.expLab = this.form.value;
+    }
+    
     const id = this.activatedRouter.snapshot.params['id'];
     this.sExperiencia.update(id, this.expLab).subscribe(
       data => {

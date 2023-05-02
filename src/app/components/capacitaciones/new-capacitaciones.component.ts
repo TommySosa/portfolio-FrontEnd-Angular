@@ -31,11 +31,15 @@ export class NewCapacitacionesComponent implements OnInit{
       this.imageService.uploadImage($event, name);
   }
   onCreate(): void {
-    this.capa = this.formulario.value;
+
+    if(this.formulario.value){
+      this.capa = this.formulario.value;
+    }
+    
     if(this.imageService.url != "") {
       this.capa.img = this.imageService.url;
     }
-    const capacitacion = new Capacitacion(this.capa.nombre, this.capa.periodo, this.capa.img);
+    const capacitacion = new Capacitacion(this.capa?.nombre, this.capa?.periodo, this.capa?.img);
     
     this.sCapacitacion.save(capacitacion).subscribe(data => {
       Swal.fire(

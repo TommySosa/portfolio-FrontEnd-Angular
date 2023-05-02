@@ -27,6 +27,7 @@ export class NewExperienciaComponent implements OnInit{
   }
 
   onCreate(): void {
+    
     const { nombreE, descripcionE } = this.form.value;
     const expe = new Experiencia(nombreE, descripcionE);
     

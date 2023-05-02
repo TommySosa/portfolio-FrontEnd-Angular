@@ -39,8 +39,10 @@ export class EditEstudiosComponent implements OnInit{
   }
 
   onUpdate() : void {
-    const { nombreE, descripcionE, img } = this.form.value;
-    this.estudios = this.form.value;
+    //const { nombreE, descripcionE, img } = this.form.value;
+    if(this.form.value){
+      this.estudios = this.form.value;
+    }
     if(this.imageService.url != "") {
       this.estudios.img = this.imageService.url;
     }

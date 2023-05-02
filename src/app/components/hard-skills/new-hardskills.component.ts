@@ -42,12 +42,15 @@ export class NewHardskillsComponent implements OnInit{
     console.log("El img url es 1: " + this.imageService.url);
   }
   onCreate(): void {
-    this.hard = this.formulario.value;
+    
+    if(this.formulario.value){
+      this.hard = this.formulario.value;
+    }
     if(this.imageService.url != "") {
       this.hard.img = this.imageService.url;
     }
     
-    const hardskill = new HardSkills(this.hard.nombre, this.hard.porcentaje, this.hard.img);
+    const hardskill = new HardSkills(this.hard?.nombre, this.hard?.porcentaje, this.hard?.img);
    
     this.sHard.save(hardskill).subscribe(data => {
       Swal.fire(

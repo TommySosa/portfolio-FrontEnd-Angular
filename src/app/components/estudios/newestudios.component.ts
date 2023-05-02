@@ -31,11 +31,14 @@ export class NewestudiosComponent implements OnInit{
       this.imageService.uploadImage($event, name);
   }
   onCreate(): void {
-    this.est = this.formulario.value;
+    if(this.formulario.value){
+      this.est = this.formulario.value;
+    }
+    
     if(this.imageService.url != "") {
       this.est.img = this.imageService.url;
     }
-    const expe = new Estudios(this.est.nombreE, this.est.descripcionE, this.est.img);
+    const expe = new Estudios(this.est?.nombreE, this.est?.descripcionE, this.est?.img);
     
     this.sEstudios.save(expe).subscribe(data => {
       Swal.fire(

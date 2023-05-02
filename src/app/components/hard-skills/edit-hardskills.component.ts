@@ -41,8 +41,11 @@ export class EditHardskillsComponent implements OnInit{
     }
   
     onUpdate() : void {
-      const { nombre, porcentaje } = this.formulario.value;
-      this.Hskill = this.formulario.value;
+      //const { nombre, porcentaje } = this.formulario.value;
+      if(this.formulario.value){
+        this.Hskill = this.formulario.value;
+      }
+      
       if(this.imageService.url != "") {
         this.Hskill.img = this.imageService.url;
       }

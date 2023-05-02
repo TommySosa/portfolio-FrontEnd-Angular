@@ -39,8 +39,12 @@ export class EditCapacitacionesComponent {
   }
 
   onUpdate() : void {
-    const { nombreE, descripcionE } = this.form.value;
-    this.capacitacion = this.form.value;
+    //const { nombreE, descripcionE } = this.form.value;
+
+    if(this.form.value){
+      this.capacitacion = this.form.value;
+    }
+    
     if(this.imageService.url != "") {
       this.capacitacion.img = this.imageService.url;
     }
